@@ -1,0 +1,123 @@
+<style>
+	.d1{
+		background-color: rgb(53,60,68);
+		position: relative;
+		height: 30px;
+		line-height: 30px;
+		padding-left: 10px;
+	}
+	.s1{
+		font-size: 12px;
+		color: white;
+	}
+	.s2{
+		position: absolute;
+		right: 10px;
+	}
+	.s2 a{
+		color: white;
+		font-size: 12px;
+		text-decoration: none;
+	}
+	.t1{
+		border-color:aliceblue;
+		margin-top: 2px;
+		font-size: 12px;
+		text-align: center;
+		background-color: rgb(230,242,254);
+	}
+	.bottom{
+		font-size: 13px;
+		padding-left: 15px;
+		position: relative;
+	}
+	.bs{
+		position: absolute;
+		right: 40px;
+	}
+	.bs a{
+		text-decoration: none;
+		color: black;
+	}
+	.bs a:hover{
+		color: cornflowerblue;
+		text-decoration: underline;
+	}
+</style>
+<div class="d1">
+	<span class="s1">订单管理</span>
+	<span class="s2">
+		<a href="#">添加</a>
+		<a href="#" onblur="dels()">删除</a>
+	</span>
+</div>
+<table border="2" width="100%" cellspacing="0" class="t1">
+	<tr>
+		<td>
+			<input id="checked" type="checkbox" />
+		</td>
+		<td>订单ID</td>
+		<td>订单号</td>
+		<td>订单创建时间</td>
+		<td>订单总价格</td>
+		<td>订单用户</td>
+		<td>订单地址</td>
+	</tr>
+    {% for i in a %}
+	<tr>
+		<td>
+			<input class="{{ i.id }}" type="checkbox"   />
+		</td>
+		<td>{{ i.id }}</td>
+		<td>{{ i.num}}</td>
+
+		<td>{{ i.create_time|date:'Y/m/d ' }}</td>
+		<td>{{ i.total_price }}</td>
+		<td>{{ i.user.email }}</td>
+		<td>{{ i.address.name }}</td>
+	</tr>
+    {% endfor %}
+</table>
+<div class="bottom">
+	共有 条记录，当前第 页，共 页
+	<span class="bs">
+		<a href="#" style="margin-right: 20px;">上一页</a>
+		
+		<a href="#">下一页</a>
+	</span>
+</div>
+<script src="/static/js/jquery1.4.2.js/"></script>
+<script>
+    function dels() {
+
+        list1=$('input')
+        a=
+        for(var i=0;i<list1.length;i++){
+'id=0'
+            if($('input').eq(i).attr('checked')==true) {
+                id = $('input').eq(i).attr('class')
+                a=a+','+id
+            }
+
+
+
+     }
+                    var xhr;
+                    xhr=new XMLHttpRequest()
+                    xhr.open('get','{% url 'ht:sc' %}?flag=3&'+a)
+                    xhr.send()
+                    xhr.onreadystatechange=function () {
+                        console.log('succ')
+                        if (xhr.readyState==4&&xhr.status==200){
+                            content=xhr.responseText
+                            console.log(content)
+                            if(content=='yes'){
+                                location.href='{% url 'ht:dzbd' %}'
+                            }
+
+                        }
+
+            }}
+
+
+</script>

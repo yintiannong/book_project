@@ -1,0 +1,44 @@
+<style>
+	.table1{
+		border-color:rgba(180,207,207,0.4);
+	}
+	.td1,.td2{
+		height: 36px;
+	}
+	.td1{
+		text-align: right;
+		padding-right: 5px;
+		background-color: rgb(230,242,254);
+		font-size: 14px;
+	}
+	.td2{
+		padding-left: 5px;
+	}	
+</style>
+<form method="post" action="{% url 'ht:tj_child' %}">
+{% csrf_token %}
+<table class="table1" border="1" cellspacing="0" width="1110px">
+	<tr>
+		<td class="td1">子类名称:</td>
+		<td class="td2"><input type="text" name="name" /></td>
+	</tr>
+	
+	
+	<tr>
+		<td class="td1">父类名称:</td>
+		<td class="td2">
+			<select name="parent_name">
+                {% for i in a %}
+				<option>{{ i.name }}</option>
+                {% endfor %}
+			</select>
+		</td>
+	</tr>
+	<tr>
+		<td style="padding-left: 24%;" colspan="2">
+			<input type="submit" value="提交" />
+			<input type="reset" value="重置"/>
+		</td>
+	</tr>
+</table>
+</form>

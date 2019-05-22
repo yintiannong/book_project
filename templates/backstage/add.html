@@ -1,0 +1,112 @@
+<style>
+	.table1{
+		border-color: lightgray;
+	}
+	.td1,.td2{
+		height: 36px;
+	}
+	.td1{
+		text-align: right;
+		padding-right: 5px;
+		background-color: rgb(230,242,254);
+		font-size: 14px;
+	}
+	.td2{
+		padding-left: 5px;
+	}
+</style>
+<form action="{% url 'ht:tj_book' %}" method="post" enctype="multipart/form-data">
+    <table class="table1" border="1" cellspacing="0" width="1110px">
+        {% csrf_token %}
+        <tr>
+            <td class="td1">书名:</td>
+            <td class="td2"><input type="text" name="name" /></td>
+        </tr>
+
+        <tr>
+            <td class="td1">作者:</td>
+            <td class="td2"><input type="text" name="author" /></td>
+        </tr>
+        <tr>
+            <td class="td1">出版社:</td>
+            <td class="td2"><input type="text" name="publish" /></td>
+        </tr>
+        <tr>
+            <td class="td1">出版时间:</td>
+            <td class="td2"><input type="date" name="create_time" /></td>
+        </tr>
+        <tr>
+            <td class="td1">版次:</td>
+            <td class="td2"><input type="text" name="edition" /></td>
+        </tr>
+        <tr>
+            <td class="td1">印刷时间:</td>
+            <td class="td2"><input type="date" name="print_time" /></td>
+        </tr>
+        <tr>
+            <td class="td1">印次:</td>
+            <td class="td2"><input type="text" name="impression"/></td>
+        </tr>
+        <tr>
+            <td class="td1">ISBN:</td>
+            <td class="td2"><input type="text" name="ISBN" /></td>
+        </tr>
+        <tr>
+            <td class="td1">字数:</td>
+            <td class="td2"><input type="text" name="num_words" /></td>
+        </tr>
+        <tr>
+            <td class="td1">页数:</td>
+            <td class="td2"><input type="text" name="num_pages" /></td>
+        </tr>
+        <tr>
+            <td class="td1">开本:</td>
+            <td class="td2"><input type="text" name="size" /></td>
+        </tr>
+        <tr>
+            <td class="td1">包装:</td>
+            <td class="td2"><input type="text" name="wrap" /></td>
+        </tr>
+        <tr>
+            <td class="td1">市场价:</td>
+            <td class="td2"><input type="text" name="market_price" /></td>
+        </tr>
+        <tr>
+            <td class="td1">当当价:</td>
+            <td class="td2"><input type="text" name="dang_price" /></td>
+        </tr>
+        <tr>
+            <td class="td1">内容简介:</td>
+            <td class="td2"><textarea name="content_abstract"></textarea></td>
+        </tr>
+        <tr>
+            <td class="td1">作者简介:</td>
+            <td class="td2"><textarea name="author_abstract"></textarea></td>
+        </tr>
+
+        <tr>
+            <td class="td1">作者介绍:</td>
+            <td class="td2"><input type="text" name="inventory" /></td>
+        </tr>
+        <tr>
+            <td class="td1">销量:</td>
+            <td class="td2"><input type="text" name="sales" /></td>
+        </tr>
+        <tr>
+            <td class="td1">类别:</td>
+            <td class="td2"><select name="parent_kind" id="">
+                {% for cate in list777 %}
+                    <option value="{{ cate.id }}">{{ cate.name }}</option>
+                {% endfor %}
+
+            </select></td>
+        </tr>
+        <tr>
+            <td class="td1">是否推荐:</td>
+            <td class="td2"><input type="text" name="recommend" /></td>
+        </tr>
+        <tr>
+            <td style="text-align: center" colspan="2"><input type="submit" /></td>
+        </tr>
+    </table>
+</form>

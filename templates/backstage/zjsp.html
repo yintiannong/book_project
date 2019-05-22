@@ -1,0 +1,32 @@
+<style>
+	.t1{
+		text-align: right;
+		padding-right: 5px;
+		background-color: rgb(230,242,254);
+		width: 46%;
+		font-size: 12px;
+	}
+	.t2{
+		height: 30px;
+		padding-left: 42%;
+		
+	}
+	.t1,.t2{
+		height: 30px;
+	}
+</style>
+<form method="post" action="{% url 'ht:tj_parent' %}">
+    {% csrf_token %}
+<table border="1" cellspacing="0" style="width: 100%;border-color:rgba(180,207,207,0.4)">
+	<tr>
+		<td class="t1">父类名称：</td>
+		<td style="padding-left: 4px;"><input type="text" name="nm"/></td>
+	</tr>
+	<tr>
+		<td class="t2" colspan="2">
+			<input type="submit" value="提交" />
+			<input type="reset" value="重置"/>
+		</td>
+	</tr>
+</table>
+</form>

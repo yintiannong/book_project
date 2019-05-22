@@ -1,0 +1,84 @@
+<style>
+	.d1{
+		background-color: rgb(53,60,68);
+		position: relative;
+		height: 30px;
+		line-height: 30px;
+		padding-left: 10px;
+	}
+	.s1{
+		font-size: 12px;
+		color: white;
+	}
+	.s2{
+		position: absolute;
+		right: 10px;
+	}
+	.s2 a{
+		color: white;
+		font-size: 12px;
+		text-decoration: none;
+	}
+	.t1{
+		border-color:aliceblue;
+		margin-top: 2px;
+		font-size: 12px;
+		text-align: center;
+		background-color: rgb(230,242,254);
+	}
+	.bottom{
+		font-size: 13px;
+		padding-left: 15px;
+		position: relative;
+	}
+	.bs{
+		position: absolute;
+		right: 40px;
+	}
+	.bs a{
+		text-decoration: none;
+		color: black;
+	}
+	.bs a:hover{
+		color: cornflowerblue;
+		text-decoration: underline;
+	}
+</style>
+<div class="d1">
+	<span class="s1">订单管理</span>
+	<span class="s2">
+		<a href="#">添加</a>
+		<a href="#">删除</a>
+	</span>
+</div>
+<table border="2" width="100%" cellspacing="0" class="t1">
+	<tr>
+		<td>
+			<input type="checkbox" />
+		</td>
+		<td>地址ID</td>
+		<td>用户名</td>
+		<td>收件人</td>
+		<td>手机号</td>
+	</tr>
+    {% for i in a %}
+	<tr>
+		<td>
+			<input type="checkbox" />
+		</td>
+		<td>{{ i.id }}</td>
+		<td>{{ i.user.email}}</td>
+
+		<td>{{ i.name }}</td>
+		<td>{{ i.phone }}</td>
+	</tr>
+    {% endfor %}
+</table>
+<div class="bottom">
+	共有 条记录，当前第 页，共 页
+	<span class="bs">
+		<a href="#" style="margin-right: 20px;">上一页</a>
+		
+		<a href="#">下一页</a>
+	</span>
+</div>
